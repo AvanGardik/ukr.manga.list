@@ -1,97 +1,137 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мангасайт</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.3s ease;
-    }
-    .container {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .theme-btns {
-      margin-bottom: 20px;
-    }
-    .theme-btns button {
-      padding: 10px 15px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    .yellow-blue {
-      background-color: #005aa7;
-      color: white;
-    }
-    .white {
-      background-color: #ffffff;
-      color: #000000;
-    }
-    .black {
-      background-color: #333333;
-      color: white;
-    }
-    .manga-card {
-      background-color: #f1f1f1;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-    }
-    .manga-card img {
-      width: 100px;
-      height: 150px;
-      object-fit: cover;
-    }
-    .manga-list {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .manga-list .manga-card {
-      width: 150px;
-      margin-right: 20px;
-      text-align: center;
-    }
-    .manga-list .manga-card:last-child {
-      margin-right: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій манга-сайт</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="yellow-blue">
-  <div class="container">
-    <div class="theme-btns">
-      <button class="yellow-blue" onclick="changeTheme('yellow-blue')">Желто-синий</button>
-      <button class="white" onclick="changeTheme('white')">Белый</button>
-      <button class="black" onclick="changeTheme('black')">Черный</button>
-    </div>
-    
-    <h1>Добро пожаловать на Манга-сайт</h1>
-    <h2>Обновления</h2>
-    <div class="manga-list">
-      <div class="manga-card">
-        <img src="https://via.placeholder.com/100x150" alt="Манга 1">
-        <p>Манга 1</p>
-      </div>
-      <div class="manga-card">
-        <img src="https://via.placeholder.com/100x150" alt="Манга 2">
-        <p>Манга 2</p>
-      </div>
-      <div class="manga-card">
-        <img src="https://via.placeholder.com/100x150" alt="Манга 3">
-        <p>Манга 3</p>
-      </div>
-    </div>
-  </div>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Манга</a></li>
+                <li><a href="#">Про нас</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <script>
-    function changeTheme(theme) {
-      const body = document.body;
-      body.className = theme;
-    }
-  </script>
+    <main>
+        <section id="manga-list">
+            <!-- Манга карточки будут добавляться здесь через JS -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Мій манга-сайт</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #0066cc;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#hero {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+#content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.manga-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.manga-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.manga-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #003366;
+    color: white;
+}
+// Пример манга данных
+const mangaData = [
+    { title: "Манга 1", description: "Опис манги 1", link: "#", id: 1 },
+    { title: "Манга 2", description: "Опис манги 2", link: "#", id: 2 },
+    { title: "Манга 3", description: "Опис манги 3", link: "#", id: 3 }
+];
+
+// Функция для создания карточки манги
+function createMangaCard(manga) {
+    const card = document.createElement('div');
+    card.classList.add('manga-card');
+
+    const title = document.createElement('h2');
+    title.textContent = manga.title;
+    card.appendChild(title);
+
+    const description = document.createElement('p');
+    description.textContent = manga.description;
+    card.appendChild(description);
+
+    const link = document.createElement('a');
+    link.href = manga.link;
+    link.textContent = "Читати";
+    card.appendChild(link);
+
+    return card;
+}
+
+// Функция для отображения манги
+function displayMangaList() {
+    const mangaList = document.getElementById('manga-list');
+    mangaData.forEach(manga => {
+        const mangaCard = createMangaCard(manga);
+        mangaList.appendChild(mangaCard);
+    });
+}
+
+// Вызов функции для отображения манги на странице
+displayMangaList();
