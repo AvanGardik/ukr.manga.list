@@ -1,24 +1,97 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Манга на українській</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мангасайт</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease;
+    }
+    .container {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .theme-btns {
+      margin-bottom: 20px;
+    }
+    .theme-btns button {
+      padding: 10px 15px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .yellow-blue {
+      background-color: #005aa7;
+      color: white;
+    }
+    .white {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .black {
+      background-color: #333333;
+      color: white;
+    }
+    .manga-card {
+      background-color: #f1f1f1;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    .manga-card img {
+      width: 100px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .manga-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .manga-list .manga-card {
+      width: 150px;
+      margin-right: 20px;
+      text-align: center;
+    }
+    .manga-list .manga-card:last-child {
+      margin-right: 0;
+    }
+  </style>
 </head>
-<body>
-    <h1>Ласкаво просимо на сайт манґи!</h1>
-    <p>Сайт у розробці. Слідкуйте за оновленнями!</p>
+<body class="yellow-blue">
+  <div class="container">
+    <div class="theme-btns">
+      <button class="yellow-blue" onclick="changeTheme('yellow-blue')">Желто-синий</button>
+      <button class="white" onclick="changeTheme('white')">Белый</button>
+      <button class="black" onclick="changeTheme('black')">Черный</button>
+    </div>
+    
+    <h1>Добро пожаловать на Манга-сайт</h1>
+    <h2>Обновления</h2>
+    <div class="manga-list">
+      <div class="manga-card">
+        <img src="https://via.placeholder.com/100x150" alt="Манга 1">
+        <p>Манга 1</p>
+      </div>
+      <div class="manga-card">
+        <img src="https://via.placeholder.com/100x150" alt="Манга 2">
+        <p>Манга 2</p>
+      </div>
+      <div class="manga-card">
+        <img src="https://via.placeholder.com/100x150" alt="Манга 3">
+        <p>Манга 3</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function changeTheme(theme) {
+      const body = document.body;
+      body.className = theme;
+    }
+  </script>
 </body>
 </html>
